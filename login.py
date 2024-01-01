@@ -63,6 +63,7 @@ try:
     element_to_click.click()
     time.sleep(3)
 
+    #hover
     element_to_hover = driver.find_element(By.XPATH, "//div[@class='sc-fzsDOv ibriDR']")
     
     hover = ActionChains(driver)
