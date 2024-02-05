@@ -12,7 +12,10 @@ from selenium.common.exceptions import NoSuchElementException
 
 # Initialize the WebDriver
 driver = webdriver.Chrome(service=ChromeService(ChromeDriverManager().install()))
+# from selenium.webdriver.firefox.service import Service as FirefoxService
+# from webdriver_manager.firefox import GeckoDriverManager
 
+# driver = webdriver.Firefox(service=FirefoxService(GeckoDriverManager().install()))
 try:
     driver.get("https://www.example.com/")
 
