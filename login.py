@@ -18,7 +18,7 @@ driver = webdriver.Chrome(service=ChromeService(ChromeDriverManager().install())
 # driver = webdriver.Firefox(service=FirefoxService(GeckoDriverManager().install()))
 try:
     driver.get("https://www.example.com/")
-
+    driver.maximize_window()
     # Wait for the "Login" button to become clickable
     login_button = WebDriverWait(driver, 10).until(
         # EC.element_to_be_clickable((By.XPATH, "//span[text(@'Login']"))
