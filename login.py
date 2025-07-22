@@ -9,19 +9,32 @@ from selenium.webdriver.common.keys import Keys
 from webdriver_manager.chrome import ChromeDriverManager
 import time
 from selenium.common.exceptions import NoSuchElementException
+import logging
 
 # Initialize the WebDriver
 driver = webdriver.Chrome(service=ChromeService(ChromeDriverManager().install()))
+# from selenium.webdriver.firefox.service import Service as FirefoxService
+# from webdriver_manager.firefox import GeckoDriverManager
 
+# driver = webdriver.Firefox(service=FirefoxService(GeckoDriverManager().install()))
 try:
     driver.get("https://www.example.com/")
-
+    driver.maximize_window()
+    
+    logging.basicConfig(
+            filename='./Log.log',  # Specify the log file name and path
+            level=logging.INFO, # Set the log level (INFO, DEBUG, ERROR, etc.)
+            format='%(asctime)s - %(name)s - %(levelname)s - %(message)s',
+            # filemode='',
+            datefmt='%d-%b-%y %H:%M:%S'
+        )
     # Wait for the "Login" button to become clickable
     login_button = WebDriverWait(driver, 10).until(
         # EC.element_to_be_clickable((By.XPATH, "//span[text(@'Login']"))
         EC.element_to_be_clickable((By.XPATH, "//button[@class='ant-btn ant-btn-text']"))
     )
     login_button.click()
+    logging.info("clicked successfully!!")
 
     # Wait for the login form to load and then fill in the login credentials
     username_input = WebDriverWait(driver, 10).until(
